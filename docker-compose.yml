@@ -1,0 +1,114 @@
+version: '2'
+services:
+
+  ####################
+  # SERVER
+  ###################
+  front-server:
+    container_name: front-server
+    build: 
+      context: ./
+      dockerfile: docker/nginx.docker
+    volumes: 
+      - ./app/:/var/www
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+    ports: 
+      - "8284:80"
+    links: 
+      - front-php-f
+      - front-php-c
+  
+  ###################
+  # PHP-FPM
+  ###################
+  front-php-f:
+    container_name: front-php-f
+    build:
+      context: ./
+      dockerfile: docker/php-fpm.docker
+    volumes:
+      - ./app/:/var/www
+    #links: 
+      # - front-mysql
+      # - front-redis
+    # environment:
+    #   - "DB_PORT=3306"
+    #   - "DB_HOST=front-mysql"
+    #   - "REDIS_PORT=6379"
+    #   - "REDIS_HOST=front-redis"
+
+  ###################
+  # PHP-CLI
+  ###################
+  front-php-c:
+    container_name: front-php-c
+    build:
+      context: ./
+      dockerfile: docker/php-cli.docker
+    volumes:
+      - ./app/:/var/www
+    #links: 
+      # - front-mysql
+      # - front-redis
+    # environment:
+    #   - "DB_PORT=3306"
+    #   - "DB_HOST=front-mysql"
+    #   - "REDIS_PORT=6379"
+    #   - "REDIS_HOST=front-redis"
+    tty: true
+  
+  ###################
+  # MYSQL
+  ###################
+  # front-mysql:
+  #   container_name: front-mysql
+  #   image: mysql:5.7
+  #   command: --sql_mode=""
+  #   volumes: 
+  #     - ./docker/images/mysql:/var/lib/mysql
+  #   environment:
+      
+
+  #     - MYSQL_ROOT_PASSWORD=secret
+  #     - MYSQL_DATABASE=app
+  #     - MYSQL_HOST= front-mysql
+  #     - MYSQL_USER=app
+  #     - MYSQL_PASSWORD=secret
+  #     - MYSQL_PORT=3306
+  #   ports:
+  #     - "33062:3306"
+
+  ###################
+  # REDIS
+  ###################
+  # front-redis:
+  #   container_name: front-redis
+  #   image: redis:3.0
+  #   ports:
+  #     - "63791:6379"
+
+  ###################
+  # NODE
+  ###################
+  front-node:
+    container_name: front-node
+    build:
+      context: ./
+      dockerfile: docker/node.docker
+    volumes:
+      - ./app/:/var/www
+    tty: true
+
+  # ###################
+  # # PHPMYADMIN
+  # ###################
+  # front-phpmyadmin:
+  #   container_name: front-phpmyadmin
+  #   image: corbinu/docker-phpmyadmin
+  #   ports:
+  #       - 8282:80
+  #   environment:
+  #       MYSQL_USERNAME: app
+  #       MYSQL_ROOT_PASSWORD: secret
+  #       MYSQL_PORT_3306_TCP_ADDR: front-mysql
+  
