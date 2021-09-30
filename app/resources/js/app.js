@@ -8,6 +8,7 @@ require('./bootstrap');
 //require('slick-carousel');
 
 window.Vue = require('vue').default;
+window.apiDomen = 'http://192.168.1.98:8280';
 
 /**
  * The following block of code may be used to automatically register your
