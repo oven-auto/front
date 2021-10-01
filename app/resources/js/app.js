@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-//require('slick-carousel');
+require('./functions/numberFormat');
 
 window.Vue = require('vue').default;
 window.apiDomen = 'http://192.168.1.98:8280';

@@ -24,10 +24,19 @@
 
             <div class="row">
                 <div v-for="item in marks" class="col-3" v-show="compareCurrentBody(item.bodywork.id)">
-                    <div class="h5">
-                        {{item.name}}
-                    </div>
-                    <img :src="item.icon.image">
+
+                   <router-link :to="linkToModel + item.slug">
+                        <img :src="item.icon.image">
+
+                        <div class="h5 text-center">
+                            {{item.prefix}} {{item.name}}
+                        </div>
+
+                        <div v-if="item.basecomplectation.price" class="text-center">
+                            от {{formatPrice(item.basecomplectation.price)}}
+                        </div>
+                    </router-link>
+
                 </div>
             </div>
         </div>
@@ -42,6 +51,7 @@ export default {
         return {
             marks: [],
             currentBodyWorkId: 0,
+            linkToModel: '/model/',
         }
     },
 
@@ -62,6 +72,10 @@ export default {
     },
 
     methods: {
+        formatPrice(param) {
+            return number_format(param,0,'',' ','руб.')
+        },
+
         compareCurrentBody(param) {
             return this.currentBodyWorkId == 0 || this.currentBodyWorkId == param
         },
