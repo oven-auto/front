@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 require('./functions/numberFormat');
+require('./functions/isType');
+
+//import '@fortawesome/fontawesome-free/js/all.js';
 
 window.Vue = require('vue').default;
 window.apiDomen = 'http://192.168.1.98:8280';

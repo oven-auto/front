@@ -6,3 +6,39 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import "~font-awesome/css/font-awesome.css";
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.big-font{
+    font-size: 1.7rem;
+}
+
+.medium-font{
+    font-size: 1.2rem;
+}
+
+.small-font{
+    font-size: 0.9rem;
+}
+
+.bg-gray{
+    background: rgb(245, 245, 245);
+}
+
+.border-bottom-dashed-grey{
+    border-bottom: dashed #ccc 1px;
+}
+.border-top-dashed-grey{
+    border-top: dashed #ccc 1px;
+}
+.car-link{
+    color: inherit !important;
+}
+.car-link:hover{
+    text-decoration: none;
+    color: inherit !important;
+}

@@ -1,19 +1,19 @@
 <template>
-<div class="mx-auto">
+<div class="mx-auto text-center">
     <div class="">
-        <img :src="currentColorImage.image">
+        <img :src="currentColorImage.image" style="width: 60%;">
     </div>
 
     <div class="">
         <span v-for="itemColorBtn in colors" class="rounded">
-            <span @click="checkColor(itemColorBtn)">
+            <span @click="checkColor(itemColorBtn)" class="mx-1">
                 <ColorIcon :color="itemColorBtn.color.web" style="margin:auto;"></ColorIcon>
             </span>
         </span>
     </div>
 
-    <div class="">
-        {{currentColorImage.color.name}} ({{currentColorImage.color.code}})
+    <div class="pt-3">
+        {{currentColorImage.color.name}} {{currentColorImage.color.code}}
     </div>
 </div>
 </template>
@@ -25,6 +25,7 @@ export default {
     name: 'color-panel',
     components: {ColorIcon},
     props: ['colors'],
+
     data() {
         return {
             current: {}
@@ -39,6 +40,8 @@ export default {
                     this.current = val
             },
             get(){
+                if(!this.current.color)
+                    this.current.color = {name: '', code: ''}
                 return this.current
             }
         },

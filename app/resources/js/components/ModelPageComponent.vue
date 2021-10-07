@@ -1,29 +1,44 @@
 <template>
 <div class="model-page">
 
-    <div class="banner-model">
-        <img :src="mark.banner.image">
-    </div>
-
-    <div class="">
-        {{mark.prefix}} {{mark.brand.name}} {{mark.name}}
-    </div>
-
-    <div class="">
-        {{mark.info.slogan}}
-    </div>
-
-    <div class="">
-        {{mark.info.description}}
-    </div>
-
-    <div class="row">
-        <div v-for="itemProp in mark.properties" class="col-6">
-            {{itemProp.name}} {{itemProp.pivot.value}}
+        <div class="banner-model">
+            <img :src="mark.banner.image">
         </div>
-    </div>
 
-    <ColorPanel :colors="mark.markcolors"></ColorPanel>
+        <div class="text-center big-font font-weight-bold pt-5">
+            {{mark.prefix}} {{mark.brand.name}} {{mark.name}}
+        </div>
+
+        <div class="text-center medium-font font-weight-bold">
+            {{mark.info.slogan}}
+        </div>
+
+        <div class="text-center medium-font pt-5">
+            {{mark.info.description}}
+        </div>
+
+        <ColorPanel :colors="mark.markcolors"></ColorPanel>
+
+        <div class="row pt-3">
+            <div class="col-12">
+                <div class="medium-font border-bottom font-weight-bold">Характеристики</div>
+            </div>
+            <div v-for="(itemProp,index) in mark.properties" :key="index" class="col-6">
+                <div class="row">
+                    <div class="col text-left">
+                        {{itemProp.name}}
+                    </div>
+                    <div class="col text-right">
+                        {{itemProp.pivot.value}}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <ComplectationList :mark_id="mark.id" class="pt-3"></ComplectationList>
+
+        <CreditCarousel :mark_id="mark.id"></CreditCarousel>
 
 </div>
 </template>
@@ -31,11 +46,13 @@
 <script>
 
 import ColorPanel from './modules/ColorPanel';
+import ComplectationList from './modules/ComplectationList';
+import CreditCarousel from './modules/CreditCarousel';
 
 export default {
     name: 'model-page',
 
-    components: {ColorPanel},
+    components: {ColorPanel, ComplectationList, CreditCarousel},
 
     data() {
         return {
@@ -52,9 +69,17 @@ export default {
         }
     },
 
+    computed: {
+        markId() {
+            return this.mark.id
+        }
+    },
+
     mounted() {
         if(this.slug != '')
+        {
             this.loadModel(this.slug)
+        }
     },
 
     methods: {
@@ -70,7 +95,9 @@ export default {
             .finally(()=>{
                 this.loading = false
             })
-        }
+        },
+
+
     }
 }
 </script>
