@@ -51,6 +51,10 @@ export default {
             })
         }
     },
+    mounted() {
+        if(this.mark_id)
+            this.loadCredit()
+    },
     watch: {
         mark_id(val, old) {
             if(val && old!=val)

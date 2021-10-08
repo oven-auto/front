@@ -20,8 +20,8 @@
         <ColorPanel :colors="mark.markcolors"></ColorPanel>
 
         <div class="row pt-3">
-            <div class="col-12">
-                <div class="medium-font border-bottom font-weight-bold">Характеристики</div>
+            <div class="col-12 border-bottom">
+                <div class="medium-font font-weight-bold">Характеристики</div>
             </div>
             <div v-for="(itemProp,index) in mark.properties" :key="index" class="col-6">
                 <div class="row">
@@ -38,7 +38,8 @@
 
         <ComplectationList :mark_id="mark.id" class="pt-3"></ComplectationList>
 
-        <CreditCarousel :mark_id="mark.id"></CreditCarousel>
+
+        <CreditCarousel :mark_id="mark.id" class="pt-3"></CreditCarousel>
 
 </div>
 </template>

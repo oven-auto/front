@@ -28,7 +28,9 @@
 .bg-gray{
     background: rgb(245, 245, 245);
 }
-
+.border-top, .border-bottom{
+    border-color: rgb(245, 245, 245);
+}
 .border-bottom-dashed-grey{
     border-bottom: dashed #ccc 1px;
 }

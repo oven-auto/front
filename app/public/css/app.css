@@ -12346,6 +12346,10 @@ h3 {
   background: whitesmoke;
 }
 
+.border-top, .border-bottom {
+  border-color: whitesmoke;
+}
+
 .border-bottom-dashed-grey {
   border-bottom: dashed #ccc 1px;
 }

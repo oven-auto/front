@@ -28,7 +28,7 @@
             <div class="row bg-gray py-3" v-if="status">
                 <div class="col-8">
                     <ComplectationDescription
-                        :complectation="data"
+                        :complectation_id="complectation.id"
                         :status="status"
                         :oneLoad="true"
                     ></ComplectationDescription>
@@ -49,7 +49,7 @@
                     <TestDriveBtn></TestDriveBtn>
                 </div>
                 <div class="col">
-                    <a href="" class="btn btn-dark btn-block">Пройти в конфигуратор</a>
+                    <configBtn :complectation_id="complectation.id"></configBtn>
                 </div>
             </div>
         </div>
@@ -62,6 +62,7 @@ import PackDescription from './PackDescription';
 import CarList from './CarList';
 import QuestionBtn from './../btn/questionButton';
 import TestDriveBtn from './../btn/testDriveButton';
+import configBtn from './../btn/configureButton'
 
 export default {
     name: 'complectation-row',
@@ -77,7 +78,7 @@ export default {
             data: {}
         }
     },
-    components: {ComplectationDescription, CarList, PackDescription, TestDriveBtn,QuestionBtn},
+    components: {ComplectationDescription, CarList, PackDescription, TestDriveBtn,QuestionBtn, configBtn},
 
     methods: {
         formatPrice(price) {
@@ -102,7 +103,7 @@ export default {
         loadData() {
             if(!this.oneLoad)
                 this.loading = true
-            axios.get(apiDomen + '/api/front/complectations/show/' + this.complectation.id)
+            axios.get(apiDomen + '/api/front/complectations/show/' + this.complectation.id + '?packs=1')
             .then(res => {
                 this.data = res.data.data
             })

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="(itemPack,index) in packs" :key="index+'packs'">
-            <div v-if="index == 0" class="h5">
+            <div v-if="index == 0" class="font-weight-bold">
                 Опционное оборудование
             </div>
             <div class="pb-3">

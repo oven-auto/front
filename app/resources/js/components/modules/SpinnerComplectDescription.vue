@@ -12,12 +12,6 @@
                     <span class="sr-only">Loading...</span>
                 </div>
             </div>
-
-            <div class="col-4">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            </div>
         </div>
     </div>
 </template>
