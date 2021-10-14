@@ -11,7 +11,14 @@
                 </div>
                 <div class="row d-flex align-items-center">
                     <div class="col text-muted">
-                        {{itemPack.code}}
+
+                        <label class="checkbox d-flex align-items-center" :title="itemPack.code" :class="{checkDisabled:itemPack.colored}">
+                            <input class="device-checkbox-toggle" type="checkbox" v-bind:value="itemPack.id" v-model="selected">
+                            <div class="checkbox__text" style="">
+                                {{itemPack.code}}
+                            </div>
+                        </label>
+
                     </div>
                     <div class="col text-right medium-font">
                         {{formatPrice(itemPack.price)}}
@@ -31,19 +38,27 @@ export default {
         return {
             data: {},
             loading: true,
+            selected: [],
         }
     },
     components: {},
-    props: ['complectation_id'],
+    props: ['complectation_id','value'],
 
     computed: {
         packs() {
             return isArray(this.data.packs) ? this.data.packs : []
         },
+        selectedPackPrice() {
+            var amount = 0;
+            this.packs.forEach( item => {
+                if(this.selected.includes(item.id))
+                    amount+=item.price;
+            })
+            return amount;
+        },
     },
 
     methods: {
-
         formatPrice(price) {
             return number_format(price,0,'',' ','руб.')
         },
@@ -66,10 +81,33 @@ export default {
 
     mounted() {
         this.loadComplectation()
+    },
+
+    watch: {
+        selected(val, old) {
+            this.$emit('selectPackChild', {
+                packIds: this.selected,
+                price: this.selectedPackPrice
+            })
+        },
+
+        value(val, old) {
+            var tmpArray = []
+            this.packs.forEach(item => {
+                if(this.selected.includes(item.id) && !item.colored)
+                    tmpArray.push(item.id)
+            })
+
+            this.selected = tmpArray
+
+            val.forEach(item => {
+                this.selected.push(item)
+            })
+        }
     }
 }
 </script>
 
 <style scoped>
-
+.checkDisabled{pointer-events: none;}
 </style>

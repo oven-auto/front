@@ -15,6 +15,7 @@
 
         <div class="pt-3">
             {{currentColorImage.color.name}} {{currentColorImage.color.code}}
+            {{currentColorImage.color_packs.length ? '(платный цвет)' : ''}}
         </div>
     </div>
 </div>
@@ -78,6 +79,14 @@ export default {
             })
         }
     },
+    watch: {
+        currentColorImage(val,old) {
+            this.$emit('selectColorPacks', {
+                packs: val.color_packs,
+                color: this.currentColorImage
+            })
+        }
+    }
 }
 </script>
 
