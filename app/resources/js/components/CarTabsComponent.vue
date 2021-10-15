@@ -1,27 +1,27 @@
 <template>
     <div class="car-tabs">
         <div class="container">
+            <div class="row">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" @click="changeCurentBody(0)">
+                            Все марки
+                        </a>
 
-                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" @click="changeCurentBody(0)">
-                        Все марки
-                    </a>
+                        <a v-for="item in bodyWorkList"
+                            class="nav-item nav-link"
+                            data-toggle="tab"
+                            href="#nav-home"
+                            role="tab"
+                            @click="changeCurentBody(item.id)"
+                        >
+                            {{item.name}}
+                        </a>
 
-                    <a v-for="item in bodyWorkList"
-                        class="nav-item nav-link"
-                        data-toggle="tab"
-                        href="#nav-home"
-                        role="tab"
-                        @click="changeCurentBody(item.id)"
-                    >
-                        {{item.name}}
-                    </a>
-
-                </div>
-            </nav>
-
+                    </div>
+                </nav>
+            </div>
             <div class="row">
                 <div v-for="item in marks" class="col-3" v-show="compareCurrentBody(item.bodywork.id)">
 

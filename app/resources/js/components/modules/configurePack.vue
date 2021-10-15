@@ -46,7 +46,17 @@ export default {
 
     computed: {
         packs() {
-            return isArray(this.data.packs) ? this.data.packs : []
+            var coloredPacks = [], otherPacks = [], packsSort = [];
+            if(isArray(this.data.packs)) {
+                this.data.packs.forEach(item => {
+                    if(item.colored == 1)
+                        coloredPacks.push(item)
+                    else
+                        otherPacks.push(item)
+                })
+                packsSort = coloredPacks.concat(otherPacks)
+            }
+            return packsSort
         },
         selectedPackPrice() {
             var amount = 0;

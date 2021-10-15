@@ -1,6 +1,3 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
@@ -11,7 +8,12 @@
 
 // checkbox
 @import 'checkbox';
+//rn fonts
+@import '../fonts/renault/font.css';
 
+body{
+    font-family: 'Renault-regular';
+}
 .cursor-pointer{
     cursor: pointer;
 }

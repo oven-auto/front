@@ -24,7 +24,8 @@ window.apiDomen = 'http://192.168.1.98:8280';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('v-header', require('./components/header/HeaderComponent').default);
+Vue.component('v-footer', require('./components/footer/FooterComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

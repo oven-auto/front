@@ -6,7 +6,7 @@
         </div>
 
         <div class="">
-            <span v-for="itemColorBtn in colors" class="rounded">
+            <span v-for="itemColorBtn in sortedColors" class="rounded">
                 <span @click="checkColor(itemColorBtn)" class="mx-1">
                     <ColorIcon :color="itemColorBtn.color.web" style="margin:auto;"></ColorIcon>
                 </span>
@@ -32,15 +32,29 @@ export default {
     data() {
         return {
             current: {},
-            colors: {},
+            colors: [],
             loading: true
         }
     },
     computed: {
+        sortedColors() {
+            var moneyColors = [], zeroColors = [], result = [];
+            if(isArray(this.colors)) {
+                this.colors.forEach(item => {
+                    if(isArray(item.color_packs) && item.color_packs.length > 0)
+                        moneyColors.push(item)
+                    else
+                        zeroColors.push(item)
+                })
+                result = zeroColors.concat(moneyColors)
+            }
+            return result
+        },
+
         currentColorImage: {
             set(val = 0){
                 if(val == 0)
-                    this.current = this.colors[0]
+                    this.current = this.sortedColors[0]
                 else
                     this.current = val
             },

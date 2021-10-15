@@ -21,9 +21,11 @@
 </head>
 <body>
     <div id="app">
+        <v-header></v-header>
         <main class="container">
             <router-view></router-view>
         </main>
+        <v-footer></v-footer>
     </div>
 </body>
 </html>

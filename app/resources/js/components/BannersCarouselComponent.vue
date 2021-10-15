@@ -1,6 +1,6 @@
 <template>
 <div class="banner-block">
-    <div class="container">
+    <div class="container px-0">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div v-for="(item, index) in banners" class="carousel-item" :class="{'active' : index === 0}">

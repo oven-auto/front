@@ -1,0 +1,16 @@
+@font-face{
+	font-family: 'Renault';
+	src: url('RenaultLifeCyWeb-Bold.ttf');
+}
+@font-face{
+	font-family: 'Renault-regular';
+	src: url('RenaultLifeCyWeb-Light.ttf');
+}
+
+.rn-bold{
+	font-family: 'Renault';
+}
+
+.rn-light{
+	font-family: 'Renault-regular';
+}
