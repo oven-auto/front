@@ -4,6 +4,7 @@ import mainPage from './components/MainPageComponent';
 import modelPage from './components/ModelPageComponent';
 import carPage from './components/CarPageComponent';
 import configurePage from './components/ConfigurePage';
+import carStockPage from './components/CarsStockPageComponent'
 
 Vue.use(vueRouter);
 
@@ -23,6 +24,10 @@ const routes = [
     {
         path: '/configure/:id',
         component: configurePage
+    },
+    {
+        path: '/stock',
+        component: carStockPage
     }
 ];
 

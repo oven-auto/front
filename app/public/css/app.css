@@ -12438,3 +12438,8 @@ body {
   text-decoration: none;
   color: inherit !important;
 }
+
+.btn-renault {
+  background: #fc3;
+  color: #333;
+}
