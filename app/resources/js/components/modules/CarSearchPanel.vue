@@ -29,6 +29,8 @@
                 </div>
             </div>
 
+            <filterDevice class="pb-3" v-model="value.devices"></filterDevice>
+
             <div class="row">
                 <div class="col">
                     <button class="btn btn-dark btn-block">Очистить</button>
@@ -48,10 +50,11 @@
 import marksSelect from './../selects/markListSelect';
 import transmissionSelect from './../selects/TransmissionTypesSelect';
 import driverSelect from './../selects/DriverTypesSelect';
+import filterDevice from './FilterDevice';
 
 export default {
     name: 'car-search-panel',
-    components: {marksSelect, transmissionSelect, driverSelect},
+    components: {marksSelect, transmissionSelect, driverSelect, filterDevice},
     props: ['value'],
     methods: {
         searchTrigger() {

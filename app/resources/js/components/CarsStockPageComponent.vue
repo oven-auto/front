@@ -37,7 +37,8 @@ export default {
                 driver: '',
                 minPrice: '',
                 maxPrice: '',
-                vin: ''
+                vin: '',
+                devices: []
             },
             searchInc: 0,
         }

@@ -22,6 +22,7 @@
             :status="status"
             :carCount="complectation.cars_count"
             :oneLoad="true"
+            :params="{}"
         ></CarList>
 
         <div v-if="status" class="mb-1">

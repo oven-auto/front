@@ -123,8 +123,12 @@ export default {
             arr.push('page=' + this.page)
             arr.push('count=' + this.count)
             for(var key in this.params)
-                if(this.params[key] != '')
+                if(this.params[key] != '' && !isArray(this.params[key]))
                     arr.push(key + '=' + this.params[key])
+                if(isArray(this.params[key]))
+                    this.params[key].forEach( (item,i) => {
+                        arr.push(key+'[]='+item)
+                    })
             return arr.join('&')
         }
 

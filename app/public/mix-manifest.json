@@ -1,7 +1,4 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/fonts/RenaultLifeCyWeb-Bold.ttf": "/fonts/RenaultLifeCyWeb-Bold.ttf",
-    "/fonts/RenaultLifeCyWeb-Light.ttf": "/fonts/RenaultLifeCyWeb-Light.ttf",
-    "/fonts/font.css": "/fonts/font.css"
+    "/css/app.css": "/css/app.css"
 }
