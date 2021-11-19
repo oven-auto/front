@@ -57,6 +57,8 @@ export default {
     computed: {
         checkFavorite() {
             var favorites = localStorage.getItem('carcard')
+            if(favorites == null)
+                return 0
             favorites = favorites.split(',')
             if(favorites.includes(String(this.car.id)))
                 return 1
@@ -94,6 +96,7 @@ export default {
                 }
                 localStorage.setItem('carcard', tmp)
             }
+            carFavorite.a = tmp
         },
     }
 }

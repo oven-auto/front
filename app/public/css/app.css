@@ -12443,3 +12443,12 @@ body {
   background: #fc3;
   color: #333;
 }
+
+.btn-grey {
+  background-color: #eee;
+  color: #333;
+}
+
+.btn-grey:hover {
+  background-color: #ddd;
+}

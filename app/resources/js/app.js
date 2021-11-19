@@ -13,6 +13,8 @@ require('./functions/isType');
 window.Vue = require('vue').default;
 window.apiDomen = 'http://192.168.1.98:8280';
 
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -35,7 +37,31 @@ Vue.component('v-footer', require('./components/footer/FooterComponent').default
 
 import router from './router';
 
+// import persistentState from 'vue-persistent-state';
+
+// const initialState = {
+//     carcard: localStorage.getItem('carcard')
+// };
+// Vue.use(persistentState, initialState);
+window.carFavorite = {
+    aInternal: localStorage.getItem('carcard'),
+    aListener: function(val) {},
+    set a(val) {
+        this.aInternal = val;
+        this.aListener(val);
+    },
+    get a() {
+        return this.aInternal;
+    },
+    registerListener: function(listener) {
+        this.aListener = listener;
+    }
+}
+// carFavorite.registerListener(function(val) {
+//     alert("Someone changed the value of x.a to " + val);
+// });
+
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
 });

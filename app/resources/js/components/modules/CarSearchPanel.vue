@@ -33,11 +33,47 @@
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-dark btn-block">Очистить</button>
+                    <button class="btn btn-dark btn-block" @click="clearFilter()">Очистить</button>
                 </div>
                 <div class="col"></div>
                 <div class="col">
                     <button class="btn btn-renault btn-block" @click="searchTrigger()">Найти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-3">
+        <div class="col">
+            <div class="row">
+                <div class="col-6 pr-1">
+                    <router-link class="btn btn-grey btn-block" :to="'compare'">
+                        Сравнить {{count}}
+                    </router-link>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+
+        </div>
+
+        <div class="col">
+            <div class="row">
+                <div class="col pr-1">
+                    <button
+                        class="btn btn-block"
+                        @click="fromMinToMax()"
+                        v-bind:class="{ 'btn-secondary': value.order == 'min', 'btn-grey': value.order != 'min' }"
+                    >Сначала дешевле</button>
+                </div>
+
+                <div class="col pl-1">
+                    <button
+                        class="btn btn-grey btn-block"
+                        @click="fromMaxToMin()"
+                        v-bind:class="{ 'btn-secondary': value.order == 'max', 'btn-grey': value.order != 'max' }"
+                    >Сначала дороже</button>
                 </div>
             </div>
         </div>
@@ -56,10 +92,41 @@ export default {
     name: 'car-search-panel',
     components: {marksSelect, transmissionSelect, driverSelect, filterDevice},
     props: ['value'],
+    data() {
+        return {
+            count: 0,
+        }
+    },
     methods: {
         searchTrigger() {
             this.$emit('search', 1)
         },
+        clearFilter() {
+            this.$emit('search', 0)
+        },
+        fromMinToMax() {
+            this.value.order = 'min'
+            this.searchTrigger()
+        },
+        fromMaxToMin() {
+            this.value.order = 'max'
+            this.searchTrigger()
+        },
+        countFavoriteCar() {
+            var tmp = localStorage.getItem('carcard')
+            if(tmp != null)
+                this.count = tmp.split(',').length
+            if(tmp == '')
+                this.count = 0
+        }
     },
+
+    mounted() {
+        this.countFavoriteCar()
+        carFavorite.registerListener((val) => {
+            this.countFavoriteCar()
+        })
+    },
+
 }
 </script>

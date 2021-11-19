@@ -27,6 +27,7 @@
     "dependencies": {
         "font-awesome": "^4.7.0",
         "slick-carousel": "^1.8.1",
+        "vue-persistent-state": "^0.2.1",
         "vue-router": "^3.5.2"
     }
 }

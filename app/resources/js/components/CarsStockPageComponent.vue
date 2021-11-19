@@ -38,7 +38,9 @@ export default {
                 minPrice: '',
                 maxPrice: '',
                 vin: '',
-                devices: []
+                devices: [],
+                order: '',
+
             },
             searchInc: 0,
         }
@@ -55,6 +57,8 @@ export default {
     },
     methods: {
         clickSearchButton(val) {
+            if(val == 0)
+                this.defaultParams()
             this.searchInc++
         },
         carCount() {
@@ -68,9 +72,23 @@ export default {
             .finally( () => {
                 this.loading = false
             })
+        },
+
+        defaultParams() {
+            this.params = {
+                mark: '',
+                transmission: '',
+                driver: '',
+                minPrice: '',
+                maxPrice: '',
+                vin: '',
+                devices: [],
+                order: '',
+            }
         }
     },
     mounted() {
+
         this.carCount()
     }
 }

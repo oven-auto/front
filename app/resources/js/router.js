@@ -4,7 +4,8 @@ import mainPage from './components/MainPageComponent';
 import modelPage from './components/ModelPageComponent';
 import carPage from './components/CarPageComponent';
 import configurePage from './components/ConfigurePage';
-import carStockPage from './components/CarsStockPageComponent'
+import carStockPage from './components/CarsStockPageComponent';
+import carComparePage from './components/CarComparePageComponent';
 
 Vue.use(vueRouter);
 
@@ -28,6 +29,10 @@ const routes = [
     {
         path: '/stock',
         component: carStockPage
+    },
+    {
+        path: '/compare',
+        component: carComparePage
     }
 ];
 
