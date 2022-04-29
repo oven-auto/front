@@ -13,3 +13,16 @@ window.isNumeric = function(param) {
 window.isArray = function(arr) {
     return Array.isArray(arr)
 }
+
+window.isset = function(val) {
+    return typeof(val) != "undefined" && val !== null
+}
+
+window.isEmptyObject = function(obj) {
+    for (var i in obj) {
+        if (obj.hasOwnProperty(i)) {
+            return false;
+        }
+    }
+    return true;
+}

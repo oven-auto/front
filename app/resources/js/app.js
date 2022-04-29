@@ -7,11 +7,13 @@
 require('./bootstrap');
 require('./functions/numberFormat');
 require('./functions/isType');
+require('./functions/oneHeight');
 
 //import '@fortawesome/fontawesome-free/js/all.js';
 
 window.Vue = require('vue').default;
 window.apiDomen = 'http://192.168.1.98:8280';
+window.BRAND_ID = '1';
 
 
 
@@ -28,6 +30,7 @@ window.apiDomen = 'http://192.168.1.98:8280';
 
 Vue.component('v-header', require('./components/header/HeaderComponent').default);
 Vue.component('v-footer', require('./components/footer/FooterComponent').default);
+Vue.component('v-top-menu', require('./components/header/TopMenuComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -43,6 +46,9 @@ import router from './router';
 //     carcard: localStorage.getItem('carcard')
 // };
 // Vue.use(persistentState, initialState);
+
+
+
 window.carFavorite = {
     aInternal: localStorage.getItem('carcard'),
     aListener: function(val) {},
@@ -56,10 +62,12 @@ window.carFavorite = {
     registerListener: function(listener) {
         this.aListener = listener;
     }
-}
+};
 // carFavorite.registerListener(function(val) {
 //     alert("Someone changed the value of x.a to " + val);
 // });
+
+
 
 const app = new Vue({
     el: '#app',

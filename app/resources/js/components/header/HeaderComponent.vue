@@ -7,7 +7,7 @@
                 <a href="http://renault.ru/my-renault/index.jsp" target="_blank">Подключитесь к My Renault</a>
             </div>
             <div class="col text-right">
-                <a class="mx-1" href="">Автомобили в продаже</a>
+                <router-link class="mx-1" :to="'/stock'">Автомобили в продаже</router-link>
                 <a class="mx-1" href="">Тест-драйв</a>
                 <a class="mx-1" href="">Записаться на сервис</a>
             </div>
@@ -17,7 +17,9 @@
     <div class="container header py-2">
         <div class="row align-items-center rn-bold">
             <div class="col-sm-1">
-                <img :src="'http://renault.oven-auto.ru/images/logo.png'"/>
+                <router-link :to="'/'">
+                    <img :src="'http://renault.oven-auto.ru/images/logo.png'"/>
+                </router-link>
             </div>
 
             <div class="col-sm-5">

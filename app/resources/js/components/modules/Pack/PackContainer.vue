@@ -6,7 +6,10 @@
             </div>
             <div class="pb-3">
                 <div class="border-bottom-dashed-grey">
-                    {{itemPack.name}} &nbsp
+                    {{itemPack.name}} <br/>
+                    <div v-for="itemDevice in itemPack.devices" :key="'packdevice'+itemDevice.id">
+                        {{itemDevice.name}}
+                    </div>
                 </div>
                 <div class="row d-flex align-items-center">
                     <div class="col text-muted">
@@ -29,6 +32,6 @@ export default {
         formatPrice(price) {
             return number_format(price,0,'',' ','руб.')
         },
-    }
+    },
 }
 </script>

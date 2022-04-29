@@ -40,7 +40,7 @@ export default {
                 vin: '',
                 devices: [],
                 order: '',
-
+                car_ids: ''
             },
             searchInc: 0,
         }

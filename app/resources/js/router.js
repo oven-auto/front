@@ -6,6 +6,8 @@ import carPage from './components/CarPageComponent';
 import configurePage from './components/ConfigurePage';
 import carStockPage from './components/CarsStockPageComponent';
 import carComparePage from './components/CarComparePageComponent';
+import pagesView from './components/PagesViewComponents';
+import formPage from './components/FormPage';
 
 Vue.use(vueRouter);
 
@@ -33,6 +35,14 @@ const routes = [
     {
         path: '/compare',
         component: carComparePage
+    },
+    {
+        path: '/page/:id',
+        component: pagesView
+    },
+    {
+        path: '/form/:id',
+        component: formPage
     }
 ];
 

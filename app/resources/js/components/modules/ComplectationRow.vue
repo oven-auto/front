@@ -29,16 +29,16 @@
             <div class="row bg-gray py-3" v-if="status">
                 <div class="col-8">
                     <ComplectationDescription
-                        :complectation_id="complectation.id"
+                        :complectation="complectation"
                         :status="status"
                         :oneLoad="true"
                     ></ComplectationDescription>
                 </div>
 
                 <div class="col-4">
-                    <PackDescription
-                        :packs="packs"
-                    ></PackDescription>
+                    <PackComplect
+                        :complectation="complectation.id"
+                    ></PackComplect>
                 </div>
             </div>
 
@@ -58,12 +58,12 @@
 </template>
 
 <script>
-import ComplectationDescription from './ComplectDescription';
-import PackDescription from './PackDescription';
+import ComplectationDescription from './Device/ComplectDescription';
+import PackComplect from './Pack/PackComplect';
 import CarList from './CarList';
 import QuestionBtn from './../btn/questionButton';
 import TestDriveBtn from './../btn/testDriveButton';
-import configBtn from './../btn/configureButton'
+import configBtn from './../btn/configureButton';
 
 export default {
     name: 'complectation-row',
@@ -79,7 +79,7 @@ export default {
             data: {}
         }
     },
-    components: {ComplectationDescription, CarList, PackDescription, TestDriveBtn,QuestionBtn, configBtn},
+    components: {ComplectationDescription, CarList, PackComplect, TestDriveBtn,QuestionBtn, configBtn},
 
     methods: {
         formatPrice(price) {
@@ -93,28 +93,26 @@ export default {
         },
 
         openComplect() {
-            if(this.status == false){
+            if(this.status == false)
                 this.status = true
-                this.loadData()
-            }
             else
                 this.status = false
         },
 
-        loadData() {
-            if(!this.oneLoad)
-                this.loading = true
-            axios.get(apiDomen + '/api/front/complectations/show/' + this.complectation.id + '?packs=1')
-            .then(res => {
-                this.data = res.data.data
-            })
-            .catch(errors => {
+        // loadData() {
+        //     if(!this.oneLoad)
+        //         this.loading = true
+        //     axios.get(apiDomen + '/api/front/complectations/show/' + this.complectation.id )
+        //     .then(res => {
+        //         //this.data = res.data.data
+        //     })
+        //     .catch(errors => {
 
-            })
-            .finally(() => {
-                this.loading = false
-            })
-        },
+        //     })
+        //     .finally(() => {
+        //         this.loading = false
+        //     })
+        // },
     }
 }
 </script>

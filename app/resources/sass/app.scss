@@ -8,6 +8,10 @@
 
 // checkbox
 @import 'checkbox';
+
+// checkbox
+@import 'quill';
+
 //rn fonts
 @import '../fonts/renault/font.css';
 
@@ -19,15 +23,15 @@ body{
 }
 
 .big-font{
-    font-size: 1.7rem;
+    font-size: $bigFont;
 }
 
 .medium-font{
-    font-size: 1.2rem;
+    font-size: $mediumFont;
 }
 
 .small-font{
-    font-size: 0.9rem;
+    font-size: $smallFont;
 }
 
 .bg-gray{
@@ -61,3 +65,49 @@ body{
 .btn-grey:hover{
     background-color: #ddd;
 }
+
+
+.back-tradein{
+    background: url('/tradein.jpg');
+    background-size: cover;
+    background-position:bottom;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #000;
+}
+.tradein-step .tradein-stepicon{
+    display: inline-block;
+    background: #999;
+    color: #ddd;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-style:normal;
+}
+
+.tradein-form input, .tradein-form textarea, .tradein-form select{
+    background: #fff;
+    border: 0px;
+    border-radius: 0px;
+    font-size: $mediumFont;
+}
+
+.back-testdrive{
+    background: url('/test.jpg');
+    background-size: cover;
+    background-position:center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ddd;
+}
+.testdrive-form input, .testdrive-form textarea, .testdrive-form select{
+    background: #fff;
+    border: 0px;
+    border-radius: 0px;
+    font-size: $mediumFont;
+}
+

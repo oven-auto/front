@@ -51,6 +51,13 @@
                         Сравнить {{count}}
                     </router-link>
                 </div>
+                <div class="col-6">
+                    <button
+                        class="btn btn-grey btn-block"
+                        @click="onlyChecked()"
+                        v-bind:class="{ 'btn-secondary': value.order == 'max', 'btn-grey': value.order != 'max' }"
+                    >Выбранные {{count}}</button>
+                </div>
             </div>
         </div>
 
@@ -110,6 +117,13 @@ export default {
         },
         fromMaxToMin() {
             this.value.order = 'max'
+            this.searchTrigger()
+        },
+        onlyChecked() {
+            if(this.value.car_ids.length>0)
+                this.value.car_ids = []
+            else
+                this.value.car_ids = localStorage.getItem('carcard').split(',')
             this.searchTrigger()
         },
         countFavoriteCar() {

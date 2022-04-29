@@ -22,7 +22,8 @@
 <body>
     <div id="app">
         <v-header></v-header>
-        <main class="container">
+        <v-top-menu></v-top-menu>
+        <main class="">
             <router-view></router-view>
         </main>
         <v-footer></v-footer>

@@ -14,7 +14,7 @@
             <div>
                 <div class="row">
                     <div class="col-8">
-                        <complectDescription :complectation_id="complectation_id"></complectDescription>
+                        <complectDescription :complectation="complectation"></complectDescription>
                     </div>
 
                     <div class="col-4">
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import complectDescription from './modules/ComplectDescription'
-import configPack from './modules/configurePack'
-import carHead from './modules/CarHead'
-import configureColor from './modules/configureColorPanel'
-import CreditCarousel from './modules/CreditCarousel'
+import complectDescription from './modules/Device/ComplectDescription';
+import configPack from './modules/Pack/PackConfigure';
+import carHead from './modules/CarHead';
+import configureColor from './modules/configureColorPanel';
+import CreditCarousel from './modules/CreditCarousel';
 
 export default {
     name: 'configure-page',

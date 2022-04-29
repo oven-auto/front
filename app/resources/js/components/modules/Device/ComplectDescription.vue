@@ -22,8 +22,8 @@
 
 <script>
 
-import spinner from './SpinnerComplectDescription';
-import mororComplectation from './Motor/MotorComplectation';
+import spinner from './../SpinnerComplectDescription';
+import mororComplectation from './../Motor/MotorComplectation';
 
 export default {
     name: 'Complectation-description',
